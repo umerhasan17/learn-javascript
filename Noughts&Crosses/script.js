@@ -43,7 +43,7 @@ function checkWin(board , player) {
     for (let [index , win] of winCombos.entries()) {
         // for every element in the array within the array check if plays.indexOf is more than -1. 
         // has the player played in every spot that counts as a win. 
-        if (win.every(elem => plays.indexOf(elem > -1))) {
+        if (win.every(elem => plays.indexOf(elem) > -1)) {
             gameWon = {index: index , player: player};
             break;
         }
