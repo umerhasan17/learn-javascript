@@ -1,6 +1,7 @@
 var origBoard;
 const huPlayer = 'O';
 const aiPlayer = 'X';
+const huPlayer2 = 'X';
 const winCombos = [
     [0 , 1 , 2],
     [3 , 4, 5],
@@ -13,9 +14,24 @@ const winCombos = [
 ]
 const cells = document.querySelectorAll('.cell');
 
-startGame();
+function startTwoPlayerGame() {
+    document.querySelector(".endgame").style.display = "none";
+    origBoard = Array.from(Array(9).keys());
+    for (var i = 0 ; i < cells.length ; i++) {
+        cells[i].innerText = '';
+        cells[i].style.removeProperty('background-color');
+        cells[i].addEventListener('click' , twoPlayerTurnClick , false);
+    }
+}
 
-function startGame() {
+function twoPlayerTurnClick(square) {
+    if (typeof origBoard[square.target.id] == 'number') {
+        turn(square.target.id , huPlayer);
+        
+    }
+}
+
+function startAIGame() {
     document.querySelector(".endgame").style.display = "none";
     origBoard = Array.from(Array(9).keys());
     for (var i = 0 ; i < cells.length ; i++) {

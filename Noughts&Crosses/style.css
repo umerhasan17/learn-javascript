@@ -1,6 +1,7 @@
 html {
     background-color: rgba(10, 15, 68, 0.8);
     color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 a {
@@ -14,11 +15,15 @@ a:hover {
 
 .jumbotron {
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .jumbotron p {
     font-size: 2em;
+}
+
+.play-options {
+    text-align: center;
+    padding: 20 0 10 0;
 }
 
 .container {
@@ -37,6 +42,7 @@ table {
 }
 
 .endgame {
+    display: none;
     position: absolute;
     left: 50%;
     margin-top: 72px;
@@ -49,6 +55,10 @@ table {
     border-radius: 5px;
     color: white;
     font-size: 2em;  
+}
+
+.endgame p {
+    font-size: 0.5em;
 }
 
 td {
