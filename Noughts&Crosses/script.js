@@ -89,7 +89,7 @@ function checkTie() {
 			cells[i].style.backgroundColor = "green";
 			cells[i].removeEventListener('click', turnClick, false);
 		}
-		declareWinner("Tie Game.")
+		declareWinner("Tie Game.");
 		return true;
 	}
 	return false;
@@ -100,12 +100,16 @@ function minimax(newBoard, player) {
 
 	if (checkWin(newBoard, huPlayer)) {
 		return {score: -10};
-	} else if (checkWin(newBoard, aiPlayer)) {
+    } 
+    else if (checkWin(newBoard, aiPlayer)) {
 		return {score: 10};
-	} else if (availSpots.length === 0) {
+    } 
+    else if (availSpots.length === 0) {
 		return {score: 0};
-	}
-	var moves = [];
+    }
+    
+    var moves = [];
+    
 	for (var i = 0; i < availSpots.length; i++) {
 		var move = {};
 		move.index = newBoard[availSpots[i]];
@@ -114,17 +118,18 @@ function minimax(newBoard, player) {
 		if (player == aiPlayer) {
 			var result = minimax(newBoard, huPlayer);
 			move.score = result.score;
-		} else {
+        }
+        else {
 			var result = minimax(newBoard, aiPlayer);
 			move.score = result.score;
-		}
-
+        }
+        
 		newBoard[availSpots[i]] = move.index;
-
 		moves.push(move);
 	}
 
-	var bestMove;
+    var bestMove;
+    
 	if(player === aiPlayer) {
 		var bestScore = -10000;
 		for(var i = 0; i < moves.length; i++) {
@@ -133,7 +138,8 @@ function minimax(newBoard, player) {
 				bestMove = i;
 			}
 		}
-	} else {
+    } 
+    else {
 		var bestScore = 10000;
 		for(var i = 0; i < moves.length; i++) {
 			if (moves[i].score < bestScore) {
