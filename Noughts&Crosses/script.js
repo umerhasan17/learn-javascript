@@ -39,7 +39,26 @@ function turn(squareId , player) {
 function checkWin(board , player) {
     let plays = board.reduce((a , e , i) => (e === player) ? a.concat(i) : a , []);
     let gameWon = null;
+    // looping through all possible winning arrangements
     for (let [index , win] of winCombos.entries()) {
-        
+        // for every element in the array within the array check if plays.indexOf is more than -1. 
+        // has the player played in every spot that counts as a win. 
+        if (win.every(elem => plays.indexOf(elem > -1))) {
+            gameWon = {index: index , player: player};
+            break;
+        }
     }
+    // will be null if no one has one
+    return gameWon;
+}
+
+function gameOver(gameWon) {
+    for (let index of winCombos[gameWon.index]) {
+        document.getElementById(index).style.backgroundColor = gameWon.player == huPlayer ? "blue" : "red";   
+    }
+
+    for (var i = 0 ; i < cells.length ; i++) {
+        cells[i].removeEventListener('click' , turnClick , false);
+    }
+
 }
