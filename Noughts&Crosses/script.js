@@ -26,7 +26,12 @@ function startGame() {
 }
 
 function turnClick(square) {
-    turn(square.target.id , huPlayer)
+    if (typeof origBoard[square.target.id] == 'number') { // means nobody has played in that spot
+        // human player takes a turn
+        turn(square.target.id , huPlayer)
+        // if the game is not a tie. AI picks the best spot
+        if (!checkTie()) turn(bestSpot() , aiPlayer);
+    }
 }
 
 function turn(squareId , player) {
@@ -56,9 +61,38 @@ function gameOver(gameWon) {
     for (let index of winCombos[gameWon.index]) {
         document.getElementById(index).style.backgroundColor = gameWon.player == huPlayer ? "blue" : "red";   
     }
-
     for (var i = 0 ; i < cells.length ; i++) {
         cells[i].removeEventListener('click' , turnClick , false);
     }
 
+    // output to the screen
+    declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");
 }
+
+function declareWinner(who) { 
+    document.querySelector(".endgame").style.display = "block";
+    document.querySelector(".endgame .text").innerText = who;
+}
+
+function emptySquares() {
+    // filter to return only the empty squares
+    return origBoard.filter(s => typeof s == 'number');
+}
+
+function bestSpot() {
+    return emptySquares()[0];
+}
+
+function checkTie() {
+    if (emptySquares().length == 0) {
+        for (var i = 0 ; i , cells.length ; i++) {
+            cells[i].style.backgroundColor = "green";
+            cells[i].removeEventListener('click' , turnClick , false);
+        }
+        declareWinner("Tie Game.");
+        return true;
+    }
+    return false;
+}
+
+
