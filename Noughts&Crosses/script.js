@@ -21,13 +21,14 @@ function startTwoPlayerGame() {
         cells[i].innerText = '';
         cells[i].style.removeProperty('background-color');
         cells[i].addEventListener('click' , twoPlayerTurnClick , false);
+        
     }
 }
 
-function twoPlayerTurnClick(square) {
+function twoPlayerTurnClick(square , square2) {
     if (typeof origBoard[square.target.id] == 'number') {
         turn(square.target.id , huPlayer);
-        
+        if (!checkTie()) turn( square2.target.id , huPlayer2)
     }
 }
 
