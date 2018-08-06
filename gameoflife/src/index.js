@@ -3,53 +3,51 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Box extends React.Component {
-    selectBox = () => {
-        this.props.selectBox(this.props.row , this.props.col)
-    }
+	selectBox = () => {
+		this.props.selectBox(this.props.row, this.props.col);
+	}
 
-    render() {
-        return (
-            <div 
-                className={this.props.boxClass} 
-                id={this.props.id} 
-                onClick={this.selectBox}
-            />
-        );
-    }
+	render() {
+		return (
+			<div
+				className={this.props.boxClass}
+				id={this.props.id}
+				onClick={this.selectBox}
+			/>
+		);
+	}
 }
 
 class Grid extends React.Component {
-    render() {
-        const width = (this.props.cols * 14);
-        var rowsArr = [];
+	render() {
+		const width = (this.props.cols * 14);
+		var rowsArr = [];
 
-        var boxClass = "";
+		var boxClass = "";
+		for (var i = 0; i < this.props.rows; i++) {
+			for (var j = 0; j < this.props.cols; j++) {
+				let boxId = i + "_" + j;
 
-        for (var i = 0 ; i < this.props.rows ; i ++) {
-            for (var j = 0 ; j < this.props.cols ; j++) {
-                let boxId = i + "_" + j;
+				boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
+				rowsArr.push(
+					<Box
+						boxClass={boxClass}
+						key={boxId}
+						boxId={boxId}
+						row={i}
+						col={j}
+						selectBox={this.props.selectBox}
+					/>
+				);
+			}
+		}
 
-                boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
-                rowsArr.push(
-                    <Box 
-                        boxClass={boxClass} 
-                        key={boxId} 
-                        boxId={boxId} 
-                        row={i} 
-                        col={j} 
-                        selectBox={this.props.selectBox} 
-                    />
-                );
-            }
-        }
-
-
-        return (
-            <div className="grid" style={{width: width}}>
-                {rowsArr}
-            </div>
-        );
-    }
+		return (
+			<div className="grid" style={{width: width}}>
+				{rowsArr}
+			</div>
+		);
+	}
 }
 
 class Main extends React.Component {
@@ -59,9 +57,10 @@ class Main extends React.Component {
         this.speed = 100;
         this.rows = 30;
         this.cols = 50;
+
         this.state = {
             generation: 0,
-            gridFull: Array(this.row).fill().map(() => Array(this.cols).fill(false))
+            gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
 
         }
     }
