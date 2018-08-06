@@ -1,3 +1,5 @@
+Noughts & Crosses uses HTML CSS and vanilla JavaScript. Good introduction to functions in JS as well as the minimax algorithm utilised by the AI to make an unbeatable noughts and crosses game.
+
 Thoughts on the Noughts & Crosses JavaScript game
 
 Possible extra features: 
