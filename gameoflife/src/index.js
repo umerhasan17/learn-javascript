@@ -54,6 +54,7 @@ class Main extends React.Component {
 
     constructor() {
         super();
+        // 100 milliseconds
         this.speed = 100;
         this.rows = 30;
         this.cols = 50;
@@ -88,6 +89,13 @@ class Main extends React.Component {
         })
     }
 
+    playButton = () => {
+        // want to restart when we click play so clear the interval
+        clearInterval(this.intervalId);
+        this.intervalId = setInterval(this.play , this.speed);
+    }
+
+    // as soon as everything loads execute this. Special function.
     componentDidMount() {
         this.seed();
     }
