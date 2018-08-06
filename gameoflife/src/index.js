@@ -9,14 +9,18 @@ class Box extends React.Component {
 
     render() {
         return (
-            <div className={this.props.boxClass} id={this.props.id} onClick={this.selectBox}/>
-        )
+            <div 
+                className={this.props.boxClass} 
+                id={this.props.id} 
+                onClick={this.selectBox}
+            />
+        );
     }
 }
 
 class Grid extends React.Component {
     render() {
-        const width = this.props.cols * 14;
+        const width = (this.props.cols * 14);
         var rowsArr = [];
 
         var boxClass = "";
@@ -24,7 +28,7 @@ class Grid extends React.Component {
         for (var i = 0 ; i < this.props.rows ; i ++) {
             for (var j = 0 ; j < this.props.cols ; j++) {
                 let boxId = i + "_" + j;
-                
+
                 boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
                 rowsArr.push(
                     <Box 
@@ -41,7 +45,9 @@ class Grid extends React.Component {
 
 
         return (
-            <div className="grid" style={{width: width}}>{rowsArr}</div>
+            <div className="grid" style={{width: width}}>
+                {rowsArr}
+            </div>
         );
     }
 }
@@ -55,7 +61,7 @@ class Main extends React.Component {
         this.cols = 50;
         this.state = {
             generation: 0,
-            gridFull: Array(this.row).fill().map(() => Array(this.cols).fill(false)),
+            gridFull: Array(this.row).fill().map(() => Array(this.cols).fill(false))
 
         }
     }
