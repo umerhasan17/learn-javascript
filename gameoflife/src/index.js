@@ -13,7 +13,7 @@ class Grid extends React.Component() {
     }
 }
 
-// Main class
+// Main 
 class Main extends React.Component() { 
     
     constructor() {
