@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Grid extends React.Component() {
+class Grid extends React.Component {
     render() {
         return (
             <div>Grid</div>
@@ -10,7 +10,7 @@ class Grid extends React.Component() {
     }
 }
 
-class Main extends React.Component() {
+class Main extends React.Component {
 
     constructor() {
         super();
