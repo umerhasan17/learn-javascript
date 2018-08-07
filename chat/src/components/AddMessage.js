@@ -14,10 +14,9 @@ const AddMessage = (props) => {
                     }
                 }}
                 type="text"
-                ref{(node) => {
+                ref={(node) => {
                     input = node
                 }}
-
             />
         </section>
     )

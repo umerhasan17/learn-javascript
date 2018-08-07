@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
 let nextMessageId = 0;
-const nextUserId = 0;
+let nextUserId = 0;
 
 // these are the actions but they don't actually change the state
 // reducers take care of creating a new state when the action is dispatched
