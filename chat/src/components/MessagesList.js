@@ -6,7 +6,7 @@ const MessagesList = (messages) => (
     <section id="messages-list">
         <ul>
             {messages.map(message => (
-                <Messages
+                <Message
                     key={message.id}
                     {...message}
                 />
