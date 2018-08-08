@@ -8,8 +8,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers';
-import {addUser} from './actions';
-import {setupSocket} from './sockets';
+import setupSocket from './sockets';
 import handleNewMessage from './sagas';
 import username from './utils/name';
 
@@ -23,7 +22,6 @@ const socket = setupSocket(store.dispatch , username);
 // handleNewMessage from the sagas
 sagaMiddleware.run(handleNewMessage , {socket , username});
 
-store.dispatch(addUser('Me'));
 
 // initialise redux
 
