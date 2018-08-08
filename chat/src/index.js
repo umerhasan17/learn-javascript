@@ -17,8 +17,10 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducers , applyMiddleware(sagaMiddleware));
 
+// initialise socket to reference inside the saga
 const socket = setupSocket(store.dispatch , username);
 
+// handleNewMessage from the sagas
 sagaMiddleware.run(handleNewMessage , {socket , username});
 
 store.dispatch(addUser('Me'));
