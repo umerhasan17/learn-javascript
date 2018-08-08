@@ -6,8 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux'; // where all the app data is stored
 import chat from './reducers';
+import {addUser} from './actions';
 
 const store = createStore(chat);
+
+store.dispatch(addUser('Me'));
 
 // initialise redux
 
