@@ -24,7 +24,7 @@ class App extends Component {
         this.setState({text : response.data.text} , function () {
           console.log(this.state);
         });
-      })
+      })  
       .catch((err) => {
         console.log(err);
       });
