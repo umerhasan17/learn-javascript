@@ -1,2 +1,7 @@
 # LearnJavaScript
-JavaScript and it's many variations. Hopefully I will get around to jQuery, React, Vue, Node, Angular and many more. 
+JavaScript and React. Following tutorials and thinking on extending them by adding more features. 
+
+TODO:
+Vue
+Angular
+& many more.
